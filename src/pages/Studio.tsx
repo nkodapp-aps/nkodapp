@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import {
   Smartphone,
   Users,
@@ -43,6 +42,14 @@ export default function Studio() {
     setAuthed(sessionStorage.getItem(SESSION_KEY) === "ok");
   }, []);
 
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex,nofollow";
+    document.head.appendChild(meta);
+    return () => { document.head.removeChild(meta); };
+  }, []);
+
   const login = (e: React.FormEvent) => {
     e.preventDefault();
     if (pwd === config.password) {
@@ -61,9 +68,7 @@ export default function Studio() {
 
   if (!authed) {
     return (
-      <>
-        <Helmet><meta name="robots" content="noindex,nofollow" /></Helmet>
-        <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-6">
+      <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-6">
           <form onSubmit={login} className="w-full max-w-sm rounded-2xl border border-border bg-gradient-card p-8 shadow-card">
             <div className="flex justify-center"><Logo size="lg" /></div>
             <p className="mt-3 text-center text-sm text-foreground-muted">Studio · Acceso restringido</p>
@@ -82,15 +87,12 @@ export default function Studio() {
               Pista demo: <span className="font-mono">fluxa2025</span>
             </p>
           </form>
-        </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
-      <Helmet><meta name="robots" content="noindex,nofollow" /></Helmet>
-      <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
         <header className="border-b border-border bg-surface-1">
           <div className="container flex h-16 items-center justify-between">
             <div className="flex items-center gap-3">
@@ -136,7 +138,6 @@ export default function Studio() {
             {tab === "config" && <ConfigAdmin />}
           </main>
         </div>
-      </div>
-    </>
+    </div>
   );
 }
