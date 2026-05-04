@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
 import { Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,20 +40,39 @@ export function Contacto() {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
-    // Configuración de envío a nkodapp@gmail.com
-    const emailDestino = "nkodapp@gmail.com";
-    const asunto = `Nueva solicitud de proyecto: ${data.empresa}`;
-    const cuerpo = `Hola NKODAPP,%0D%0A%0D%0AHe recibido una nueva solicitud desde la web:%0D%0A%0D%0A- Nombre: ${data.nombre}%0D%0A- Email: ${data.email}%0D%0A- WhatsApp: ${data.whatsapp}%0D%0A- Empresa/Proyecto: ${data.empresa}%0D%0A- Descripción: ${data.descripcion}`;
+    // Estos nombres deben ser EXACTAMENTE iguales a los que pusiste entre {{}} en EmailJS
+    const templateParams = {
+      user_name: data.nombre,
+      user_email: data.email,
+      user_phone: data.whatsapp,
+      project_name: data.empresa,
+      industry: data.industria,
+      tech: data.tecnologia,
+      platform: platforms.join(", "),
+      message: data.descripcion,
+      has_designs: hasDesign ? "Sí" : "No",
+    };
 
-    // Abrir cliente de correo
-    window.location.href = `mailto:${emailDestino}?subject=${encodeURIComponent(asunto)}&body=${cuerpo}`;
-
-    setTimeout(() => {
+    emailjs.send(
+      'service_1nvfmgo', // Tu Service ID que vimos en la imagen
+      'template_b34izbr',  // REEMPLAZA CON: El ID de tu plantilla (pestaña Email Templates)
+      templateParams,
+      'JbHWH2Xr0r9hQ8Uch'    // REEMPLAZA CON: Tu Public Key (pestaña Account)
+    )
+    .then(() => {
+      toast.success("¡Solicitud enviada! Nos pondremos en contacto pronto.");
+      (e.target as HTMLFormElement).reset(); // Limpia el formulario
+      setPlatforms(["Ambas"]);
+      setHasDesign(false);
+    })
+    .catch((error) => {
+      console.error("Error EmailJS:", error);
+      toast.error("Hubo un error al enviar. Por favor, intenta de nuevo.");
+    })
+    .finally(() => {
       setSubmitting(false);
-      toast.success("¡Recibido! Se ha abierto tu correo para confirmar el envío.");
-    }, 700);
+    });
   };
-
   const badge = {
     available: { label: "Aceptando proyectos", color: "bg-[#6ca925]" },
     waiting: { label: "Lista de espera", color: "bg-warning" },
