@@ -1,111 +1,65 @@
-import { useEffect, useState, useCallback } from "react";
-import type {
-  Project,
-  TeamMember,
-  Testimonial,
-  CompanyProfile,
-  AppConfig,
-} from "./types";
-import {
-  SEED_PROJECTS,
-  SEED_TEAM,
-  SEED_TESTIMONIALS,
-  SEED_COMPANY,
-  SEED_CONFIG,
-} from "@/data/seed";
+import { useEffect, useState } from "react";
+import { supabase } from "./supabase";
+import type { Project, TeamMember, Testimonial, CompanyProfile, AppConfig } from "./types";
+import { SEED_PROJECTS, SEED_TEAM, SEED_TESTIMONIALS, SEED_COMPANY, SEED_CONFIG } from "@/data/seed";
 
-const KEYS = {
-  projects: "fluxa.projects",
-  team: "fluxa.team",
-  testimonials: "fluxa.testimonials",
-  company: "fluxa.company",
-  config: "fluxa.config",
-} as const;
-
-const EVT = "fluxa:store-change";
-
-function read<T>(key: string, fallback: T): T {
-  if (typeof window === "undefined") return fallback;
-  try {
-    const raw = localStorage.getItem(key);
-    if (!raw) {
-      localStorage.setItem(key, JSON.stringify(fallback));
-      return fallback;
-    }
-    return JSON.parse(raw) as T;
-  } catch {
-    return fallback;
-  }
-}
-
-function write<T>(key: string, value: T) {
-  localStorage.setItem(key, JSON.stringify(value));
-  window.dispatchEvent(new CustomEvent(EVT, { detail: { key } }));
-}
-
-export function resetDemo() {
-  localStorage.setItem(KEYS.projects, JSON.stringify(SEED_PROJECTS));
-  localStorage.setItem(KEYS.team, JSON.stringify(SEED_TEAM));
-  localStorage.setItem(KEYS.testimonials, JSON.stringify(SEED_TESTIMONIALS));
-  localStorage.setItem(KEYS.company, JSON.stringify(SEED_COMPANY));
-  localStorage.setItem(KEYS.config, JSON.stringify(SEED_CONFIG));
-  window.dispatchEvent(new CustomEvent(EVT, { detail: { key: "all" } }));
-}
-
-function useStored<T>(key: string, seed: T) {
-  const [value, setValue] = useState<T>(() => read<T>(key, seed));
-
+// --- HOOK PROYECTOS ---
+export const useProjects = () => {
+  const [projects, setProjects] = useState<Project[]>(SEED_PROJECTS);
   useEffect(() => {
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (!detail || detail.key === key || detail.key === "all") {
-        setValue(read<T>(key, seed));
-      }
-    };
-    const storage = (e: StorageEvent) => {
-      if (e.key === key) setValue(read<T>(key, seed));
-    };
-    window.addEventListener(EVT, handler);
-    window.addEventListener("storage", storage);
-    return () => {
-      window.removeEventListener(EVT, handler);
-      window.removeEventListener("storage", storage);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
+    async function getProjects() {
+      try {
+        const { data, error } = await supabase.from("projects").select("*").eq("estado", "published");
+        if (error) throw error;
+        if (data && data.length > 0) {
+          const cleanData = data.map(p => ({
+            ...p,
+            screenshot_principal: p.screenshot_principal ? encodeURI(p.screenshot_principal.trim()) : ""
+          }));
+          setProjects(cleanData as Project[]);
+        }
+      } catch (err) { console.error("Error Proyectos:", err); }
+    }
+    getProjects();
+  }, []);
+  return [projects, (d: Project[]) => setProjects(d)] as const;
+};
 
-  const update = useCallback(
-    (next: T | ((prev: T) => T)) => {
-      setValue((prev) => {
-        const resolved =
-          typeof next === "function" ? (next as (p: T) => T)(prev) : next;
-        write(key, resolved);
-        return resolved;
-      });
-    },
-    [key]
-  );
+// --- HOOK EQUIPO ---
+export const useTeam = () => {
+  const [team, setTeam] = useState<TeamMember[]>(SEED_TEAM);
+  useEffect(() => {
+    async function getTeam() {
+      try {
+        const { data, error } = await supabase.from("team").select("*").order('orden', { ascending: true });
+        if (error) throw error;
+        if (data && data.length > 0) setTeam(data as TeamMember[]);
+      } catch (err) { console.error("Error Equipo:", err); }
+    }
+    getTeam();
+  }, []);
+  return [team, (d: TeamMember[]) => setTeam(d)] as const;
+};
 
-  return [value, update] as const;
-}
+// --- HOOK TESTIMONIOS ---
+export const useTestimonials = () => {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(SEED_TESTIMONIALS);
+  useEffect(() => {
+    async function getTestimonials() {
+      try {
+        const { data, error } = await supabase.from("testimonials").select("*");
+        if (error) throw error;
+        if (data && data.length > 0) setTestimonials(data as Testimonial[]);
+      } catch (err) { console.error("Error Testimonios:", err); }
+    }
+    getTestimonials();
+  }, []);
+  return [testimonials, (d: Testimonial[]) => setTestimonials(d)] as const;
+};
 
-export const useProjects = () => useStored<Project[]>(KEYS.projects, SEED_PROJECTS);
-export const useTeam = () => useStored<TeamMember[]>(KEYS.team, SEED_TEAM);
-export const useTestimonials = () =>
-  useStored<Testimonial[]>(KEYS.testimonials, SEED_TESTIMONIALS);
-export const useCompany = () =>
-  useStored<CompanyProfile>(KEYS.company, SEED_COMPANY);
-export const useConfig = () => useStored<AppConfig>(KEYS.config, SEED_CONFIG);
+export const useCompany = () => [SEED_COMPANY, () => {}] as const;
+export const useConfig = () => [SEED_CONFIG, () => {}] as const;
 
-export function slugify(input: string) {
-  return input
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
-
-export function uid() {
-  return Math.random().toString(36).slice(2, 10);
-}
+export function slugify(i: string) { return i?.toLowerCase().replace(/[^a-z0-9]+/g, "-") || ""; }
+export function uid() { return Math.random().toString(36).slice(2, 10); }
+export function resetDemo() { localStorage.clear(); window.location.reload(); }

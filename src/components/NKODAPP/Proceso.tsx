@@ -51,12 +51,12 @@ export function Proceso() {
             {STEPS.map((s, i) => (
               <Reveal key={s.title} delay={i * 100}>
                 <div className="relative">
-                  <div className="pointer-events-none absolute -top-6 left-0 font-display text-7xl font-bold text-primary/10 lg:text-8xl">
+                  <div className="pointer-events-none absolute -top-6 left-0 font-display text-7xl font-bold text-[#6ca925]/10 lg:text-8xl">
                     0{i + 1}
                   </div>
                   <div className="relative">
-                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-border-strong bg-surface-2 shadow-card">
-                      <s.icon className="h-5 w-5 text-accent" />
+                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-[#6ca925]/20 bg-surface-2 shadow-card">
+                      <s.icon className="h-5 w-5 text-[#6ca925]" />
                     </div>
                     <h3 className="mt-5 font-display text-xl font-semibold">
                       {s.title}

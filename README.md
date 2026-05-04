@@ -1,6 +1,6 @@
-# Fluxa Mobile Studio - Portfolio
+# NKODAPP Mobile Studio - Portfolio
 
-Fluxa Mobile Studio es una plataforma web moderna diseñada para presentar un estudio de desarrollo de aplicaciones móviles especializado en soluciones para Android e iOS. El sitio funciona como una landing page de alta gama y un portafolio detallado de proyectos.
+En NKODAPP, transformamos ideas en activos digitales de alto impacto. Somos una agencia especializada en el desarrollo de aplicaciones móviles y soluciones web profesionales, utilizando una metodología híbrida que combina la velocidad del No-Code con la solidez del Código tradicional. Nuestra prioridad es convertir la visión de nuestros clientes en herramientas tecnológicas robustas que impulsen el crecimiento de sus negocios.
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -16,7 +16,7 @@ Este proyecto está construido con un stack moderno y eficiente:
 
 ## 📦 Estructura del Proyecto
 
-- `src/components/fluxa/`: Componentes específicos de la marca y secciones de la landing.
+- `src/components/NKODAPP/`: Componentes específicos de la marca y secciones de la landing.
 - `src/components/ui/`: Componentes base de Shadcn UI.
 - `src/pages/`: Páginas principales (Index, Studio, Project Details).
 - `src/data/`: Datos estáticos y configuración de proyectos (`seed.ts`).

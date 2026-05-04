@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Fluxa dark-only design system. All colors HSL. */
+    /* NKODAPP dark-only design system. All colors HSL. */
     --background: 250 43% 5%;        /* #08060F */
     --surface-1: 250 38% 7%;          /* #0E0B18 */
     --surface-2: 250 35% 9%;          /* #120F20 */

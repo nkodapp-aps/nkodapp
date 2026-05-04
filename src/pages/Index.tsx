@@ -1,13 +1,13 @@
-import { Header } from "@/components/fluxa/Header";
-import { Hero } from "@/components/fluxa/Hero";
-import { Especialidades } from "@/components/fluxa/Especialidades";
-import { Proyectos } from "@/components/fluxa/Proyectos";
-import { Proceso } from "@/components/fluxa/Proceso";
-import { Stack } from "@/components/fluxa/Stack";
-import { Equipo } from "@/components/fluxa/Equipo";
-import { Testimonios } from "@/components/fluxa/Testimonios";
-import { Contacto } from "@/components/fluxa/Contacto";
-import { Footer } from "@/components/fluxa/Footer";
+import { Header } from "@/components/NKODAPP/Header";
+import { Hero } from "@/components/NKODAPP/Hero";
+import { Especialidades } from "@/components/NKODAPP/Especialidades";
+import { Proyectos } from "@/components/NKODAPP/Proyectos";
+import { Proceso } from "@/components/NKODAPP/Proceso";
+import { Stack } from "@/components/NKODAPP/Stack";
+import { Equipo } from "@/components/NKODAPP/Equipo";
+import { Testimonios } from "@/components/NKODAPP/Testimonios";
+import { Contacto } from "@/components/NKODAPP/Contacto";
+import { Footer } from "@/components/NKODAPP/Footer";
 
 const Index = () => {
   return (

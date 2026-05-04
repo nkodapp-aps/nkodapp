@@ -13,7 +13,7 @@ export function CompanyAdmin() {
   return (
     <div>
       <h1 className="font-display text-2xl font-bold">Empresa</h1>
-      <p className="text-sm text-foreground-muted">Datos generales de Fluxa.</p>
+      <p className="text-sm text-foreground-muted">Datos generales de NKODAPP.</p>
       <div className="mt-6 grid gap-4 rounded-xl border border-border bg-surface-2 p-5">
         <Field label="Tagline"><Input value={c.tagline} onChange={e => setC({ ...c, tagline: e.target.value })} /></Field>
         <Field label="Subtítulo del hero"><Textarea rows={2} value={c.subtitulo_hero} onChange={e => setC({ ...c, subtitulo_hero: e.target.value })} /></Field>

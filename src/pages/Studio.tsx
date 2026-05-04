@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Logo } from "@/components/fluxa/Logo";
+import { Logo } from "@/components/NKODAPP/Logo";
 import { useConfig, resetDemo } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { ProjectsAdmin } from "@/components/admin/ProjectsAdmin";
@@ -20,7 +20,7 @@ import { TestimonialsAdmin } from "@/components/admin/TestimonialsAdmin";
 import { ConfigAdmin } from "@/components/admin/ConfigAdmin";
 import { toast } from "sonner";
 
-const SESSION_KEY = "fluxa.studio.session";
+const SESSION_KEY = "NKODAPP.studio.session";
 
 const TABS = [
   { id: "projects", label: "Proyectos", icon: Smartphone },
@@ -84,7 +84,7 @@ export default function Studio() {
               Entrar al Studio
             </Button>
             <p className="mt-4 text-center text-xs text-foreground-dim">
-              Pista demo: <span className="font-mono">fluxa2025</span>
+              Pista demo: <span className="font-mono">NKODAPP2025</span>
             </p>
           </form>
       </div>

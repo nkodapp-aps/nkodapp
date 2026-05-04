@@ -26,7 +26,7 @@ export function Hero() {
             Especialistas en apps móviles · México y LATAM
           </div>
           <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Construimos <span className="text-gradient-brand">apps</span>
+            Construimos <span className="text-[#6ca925]">apps</span>
             <br />
             para Android e iOS.
           </h1>
@@ -57,9 +57,11 @@ export function Hero() {
         <Reveal delay={150}>
           <div className="relative mx-auto flex h-[440px] w-full max-w-md items-end justify-center lg:h-[520px]">
             <div className="absolute -inset-10 bg-gradient-brand opacity-20 blur-3xl" />
+            
+            {/* CELULAR IZQUIERDA (Aumentamos la separación con -left-16) */}
             {featured[1] && (
               <div
-                className="absolute left-0 bottom-12 -rotate-[10deg]"
+                className="absolute -left-10 bottom-12 -rotate-[12deg] z-0 opacity-80"
                 style={{ animation: "float-y 7s ease-in-out infinite" }}
               >
                 <PhoneFrame
@@ -69,9 +71,11 @@ export function Hero() {
                 />
               </div>
             )}
+
+            {/* CELULAR DERECHA (Aumentamos la separación con -right-16) */}
             {featured[2] && (
               <div
-                className="absolute right-0 bottom-12 rotate-[10deg]"
+                className="absolute -right-10 bottom-12 rotate-[12deg] z-0 opacity-80"
                 style={{ animation: "float-y 8s ease-in-out infinite", animationDelay: "1s" }}
               >
                 <PhoneFrame
@@ -81,9 +85,11 @@ export function Hero() {
                 />
               </div>
             )}
+
+            {/* CELULAR CENTRAL (Mantiene el foco) */}
             {featured[0] && (
               <div
-                className="relative z-10"
+                className="relative z-10 scale-105"
                 style={{ animation: "float-y 6s ease-in-out infinite", animationDelay: "0.5s" }}
               >
                 <PhoneFrame
@@ -101,7 +107,7 @@ export function Hero() {
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
           {company.stats_hero.map((s) => (
             <div key={s.label} className="bg-surface-2 p-6 text-center">
-              <div className="font-display text-3xl font-bold text-gradient-brand md:text-4xl">
+              <div className="font-display text-3xl font-bold bg-gradient-to-r from-[#498536] via-[#6ca925] to-[#fefffc] bg-clip-text text-transparent md:text-4xl">
                 <Counter value={s.valor} />
               </div>
               <div className="mt-1 text-xs uppercase tracking-wide text-foreground-dim">

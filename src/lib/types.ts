@@ -15,7 +15,7 @@ export interface Metric {
 export interface Project {
   id: string;
   nombre: string;
-  slug: string;
+  slug: string; // Asegúrate de que en Supabase la columna se llame exactamente así
   estado: "published" | "draft";
   destacado: boolean;
   tecnologia: Tech;
@@ -24,12 +24,12 @@ export interface Project {
   anio: number;
   cliente: string;
   duracion: string;
-  rol_fluxa: string;
+  rol_NKODAPP: string;
   descripcion_corta: string;
   reto: string;
   solucion: string;
   screenshot_principal: string;
-  galeria: string[];
+  galeria: string[]; // Importante: en Supabase es tipo jsonb
   stack: string[];
   apis: ApiIntegration[];
   metricas: Metric[];

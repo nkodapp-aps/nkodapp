@@ -48,16 +48,17 @@ export function Especialidades() {
           <SectionHeader
             kicker="Especialidades"
             title="En qué somos expertos"
-            sub="Solo apps móviles. Esa es nuestra obsesión y nuestra ventaja."
+            sub="Comvertimos las ideas en activos digitales."
           />
         </Reveal>
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map((it, i) => (
             <Reveal key={it.title} delay={i * 60}>
               <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-gradient-card p-7 transition-all hover:-translate-y-1 hover:border-border-strong hover:shadow-card">
-                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/10 blur-2xl transition-all group-hover:bg-primary/20" />
-                <it.icon className={`relative h-9 w-9 ${it.color}`} strokeWidth={1.6} />
-                <h3 className="relative mt-5 font-display text-xl font-semibold">
+                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#6ca925]/10 blur-2xl transition-all group-hover:bg-[#6ca925]/20" />
+                <it.icon className={`relative h-9 w-9 text-[#6ca925] drop-shadow-[0_0_8px_rgba(108,169,37,0.3)]"`} 
+                strokeWidth={1.6} />
+                <h3 className="relative mt-5 font-display text-xl font-semibold text-foreground">
                   {it.title}
                 </h3>
                 <p className="relative mt-2 text-sm leading-relaxed text-foreground-muted">
@@ -83,7 +84,7 @@ export function SectionHeader({
 }) {
   return (
     <div className="max-w-2xl">
-      <div className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+      <div className="font-mono text-base font-semibold uppercase tracking-[0.2em] text-[#6ca925]">
         {kicker}
       </div>
       <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">

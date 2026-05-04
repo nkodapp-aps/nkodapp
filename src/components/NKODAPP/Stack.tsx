@@ -35,14 +35,14 @@ export function Stack() {
           {GROUPS.map((g, i) => (
             <Reveal key={g.title} delay={i * 80}>
               <div className="rounded-2xl border border-border bg-gradient-card p-7">
-                <h3 className="font-display text-lg font-semibold text-foreground">
+                <h3 className="font-display text-lg font-semibold text-[#6ca925]">
                   {g.title}
                 </h3>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {g.items.map((it) => (
                     <span
                       key={it}
-                      className="rounded-md border border-border bg-surface-3 px-2.5 py-1 font-mono text-xs text-foreground-muted transition-all hover:border-primary hover:bg-primary/10 hover:text-foreground"
+                      className="rounded-md border border-border bg-surface-3 px-2.5 py-1 font-mono text-xs text-foreground-muted transition-all hover:border-[#6ca925] hover:bg-[#6ca925]/10 hover:text-[#6ca925]"
                     >
                       {it}
                     </span>

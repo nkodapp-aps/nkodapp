@@ -1,30 +1,30 @@
 import type { Project, TeamMember, Testimonial, CompanyProfile, AppConfig } from "@/lib/types";
 
 export const SEED_COMPANY: CompanyProfile = {
-  nombre: "Fluxa",
-  tagline: "Apps que viven en tu bolsillo.",
+  nombre: "NKODAPP",
+  tagline: "Ideas que se convierten en activos digitales.",
   subtitulo_hero:
     "Somos especialistas en Flutter, FlutterFlow y AppHive. Llevamos tu idea al App Store y Google Play.",
   descripcion:
-    "Fluxa es una empresa especializada exclusivamente en desarrollo de aplicaciones móviles para Android e iOS.",
+    "NKODAPP es una empresa especializada exclusivamente en desarrollo de aplicaciones móviles para Android e iOS.",
   stats_hero: [
-    { label: "Apps publicadas", valor: "24" },
+    { label: "Apps publicadas", valor: "54" },
     { label: "Descargas", valor: "180k+" },
-    { label: "Países", valor: "6" },
-    { label: "Años", valor: "4" },
+    { label: "Países", valor: "12" },
+    { label: "Años", valor: "6" },
   ],
   disponibilidad: "available",
   disponibilidad_texto: "Aceptando proyectos",
-  email: "hola@fluxa.app",
-  whatsapp: "https://wa.me/525555555555",
-  linkedin: "https://linkedin.com/company/fluxa",
-  github: "https://github.com/fluxa",
+  email: "nkodapp@gmail.com",
+  whatsapp: "https://wa.me/573005514200",
+  linkedin: "https://linkedin.com/company/NKODAPP",
+  github: "https://github.com/NKODAPP",
   behance: "",
 };
 
 export const SEED_CONFIG: AppConfig = {
-  password: "fluxa2025",
-  nombre_sitio: "Fluxa — Apps que viven en tu bolsillo",
+  password: "NKODAPP2025",
+  nombre_sitio: "NKODAPP — Ideas que se convierten en activos digitales",
   meta_descripcion:
     "Especialistas en desarrollo de apps móviles Android e iOS con Flutter, FlutterFlow, AppHive y React Native.",
 };
@@ -45,7 +45,7 @@ export const SEED_PROJECTS: Project[] = [
     anio: 2025,
     cliente: "PayFlow Inc.",
     duracion: "10 semanas",
-    rol_fluxa: "Diseño + Desarrollo completo",
+    rol_NKODAPP: "Diseño + Desarrollo completo",
     descripcion_corta:
       "App de pagos P2P con cobros instantáneos y carteras digitales.",
     reto:
@@ -88,7 +88,7 @@ export const SEED_PROJECTS: Project[] = [
     anio: 2024,
     cliente: "Clínica Vital",
     duracion: "6 semanas",
-    rol_fluxa: "Desarrollo FlutterFlow + integraciones",
+    rol_NKODAPP: "Desarrollo FlutterFlow + integraciones",
     descripcion_corta:
       "Gestión de citas médicas con recordatorios por WhatsApp.",
     reto:
@@ -128,7 +128,7 @@ export const SEED_PROJECTS: Project[] = [
     anio: 2024,
     cliente: "ShopLocal",
     duracion: "8 semanas",
-    rol_fluxa: "Desarrollo no-code + APIs",
+    rol_NKODAPP: "Desarrollo no-code + APIs",
     descripcion_corta:
       "Marketplace local que conecta comercios de barrio con sus vecinos.",
     reto:
@@ -170,7 +170,7 @@ export const SEED_PROJECTS: Project[] = [
     anio: 2023,
     cliente: "Logística Norte",
     duracion: "12 semanas",
-    rol_fluxa: "App + integración con ERP",
+    rol_NKODAPP: "App + integración con ERP",
     descripcion_corta:
       "Rastreo de envíos en tiempo real para flotas de última milla.",
     reto:
@@ -209,7 +209,7 @@ export const SEED_PROJECTS: Project[] = [
     anio: 2024,
     cliente: "LearnUp Academy",
     duracion: "9 semanas",
-    rol_fluxa: "Desarrollo React Native + pagos",
+    rol_NKODAPP: "Desarrollo React Native + pagos",
     descripcion_corta:
       "Plataforma de e-learning con video on-demand y suscripciones.",
     reto:
@@ -248,7 +248,7 @@ export const SEED_PROJECTS: Project[] = [
     anio: 2025,
     cliente: "ServiApp",
     duracion: "7 semanas",
-    rol_fluxa: "Diseño + FlutterFlow",
+    rol_NKODAPP: "Diseño + FlutterFlow",
     descripcion_corta:
       "Marketplace de servicios del hogar: plomería, electricidad y más.",
     reto:
@@ -338,7 +338,7 @@ export const SEED_TESTIMONIALS: Testimonial[] = [
     industria: "Fintech",
     foto_url: portrait("photo-1507003211169-0a1dd7228f2d"),
     texto:
-      "El equipo de Fluxa nos llevó de un Figma a una app en App Store y Google Play en menos de 3 meses. Excelente comunicación y código de calidad.",
+      "El equipo de NKODAPP nos llevó de un Figma a una app en App Store y Google Play en menos de 3 meses. Excelente comunicación y código de calidad.",
     rating: 5,
     orden: 1,
   },
@@ -349,7 +349,7 @@ export const SEED_TESTIMONIALS: Testimonial[] = [
     industria: "E-commerce",
     foto_url: portrait("photo-1573497019940-1c28c88b4f3e"),
     texto:
-      "Necesitábamos un MVP rápido para validar nuestra hipótesis. AppHive + Fluxa nos dio exactamente eso. Ya cerramos ronda seed.",
+      "Necesitábamos un MVP rápido para validar nuestra hipótesis. AppHive + NKODAPP nos dio exactamente eso. Ya cerramos ronda seed.",
     rating: 5,
     orden: 2,
   },

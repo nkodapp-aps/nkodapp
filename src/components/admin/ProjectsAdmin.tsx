@@ -23,7 +23,7 @@ function emptyProject(): Project {
   return {
     id: uid(), nombre: "", slug: "", estado: "draft", destacado: false,
     tecnologia: "flutter", plataformas: ["android","ios"], industria: "Otro",
-    anio: new Date().getFullYear(), cliente: "", duracion: "", rol_fluxa: "",
+    anio: new Date().getFullYear(), cliente: "", duracion: "", rol_NKODAPP: "",
     descripcion_corta: "", reto: "", solucion: "",
     screenshot_principal: "", galeria: [], stack: [], apis: [], metricas: [],
     orden: 999, created_at: new Date().toISOString(),
@@ -178,7 +178,7 @@ function ProjectEditor({ project, onClose, onSave }: { project: Project; onClose
           <div className="grid gap-4 sm:grid-cols-3">
             <Field label="Cliente"><Input value={p.cliente} onChange={e => set("cliente", e.target.value)} /></Field>
             <Field label="Duración"><Input value={p.duracion} onChange={e => set("duracion", e.target.value)} placeholder="8 semanas" /></Field>
-            <Field label="Rol Fluxa"><Input value={p.rol_fluxa} onChange={e => set("rol_fluxa", e.target.value)} /></Field>
+            <Field label="Rol NKODAPP"><Input value={p.rol_NKODAPP} onChange={e => set("rol_NKODAPP", e.target.value)} /></Field>
           </div>
 
           <Field label="Descripción corta (max 120)"><Textarea rows={2} maxLength={120} value={p.descripcion_corta} onChange={e => set("descripcion_corta", e.target.value)} /></Field>

@@ -19,7 +19,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/proyecto/:slug" element={<ProjectPage />} />
-          <Route path="/fluxa-studio" element={<Studio />} />
+          <Route path="/Nkodapp" element={<Studio />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
